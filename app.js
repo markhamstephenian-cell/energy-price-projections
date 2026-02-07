@@ -238,7 +238,6 @@ async function fetchEnergyData(source) {
     indicator.classList.add('active');
 
     try {
-        // Fetch from our backend API which aggregates multiple data sources
         const response = await fetch(`${API_BASE_URL}/api/prices/${source}`);
 
         if (!response.ok) {
@@ -246,7 +245,6 @@ async function fetchEnergyData(source) {
         }
 
         const data = await response.json();
-        console.log('API Response:', data);
 
         // Store data sources info for summary
         currentDataSources = data.dataSources || [];
@@ -393,14 +391,19 @@ function formatPrice(price) {
 
 // ===== Projection Calculations =====
 function calculateProjection(region) {
-    if (!currentSource || !currentData[region].price) {
+    if (!currentSource) {
+        alert('Please select an energy source first.');
+        return;
+    }
+
+    if (!currentData || !currentData[region] || !currentData[region].price) {
         alert('Please wait for price data to load.');
         return;
     }
 
     const sourceConfig = CONFIG.sources[currentSource];
     const usageIncrease = parseFloat(document.getElementById(`${region}-usage-increase`).value) || 0;
-    const currentPrice = currentData[region].price;
+    const currentPrice = parseFloat(currentData[region].price);
 
     // Calculate price increase using price elasticity model
     // Price increase = Usage increase * (1 / elasticity) * supply constraint factor
