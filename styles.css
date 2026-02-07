@@ -939,15 +939,153 @@ body {
 
 @media (max-width: 480px) {
     .main-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
     }
 
     .price-number {
-        font-size: 2.25rem;
+        font-size: 2rem;
     }
 
     .sources-grid {
         grid-template-columns: 1fr;
+    }
+
+    .energy-card {
+        padding: 24px 20px;
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-icon svg {
+        width: 48px;
+        height: 48px;
+    }
+
+    .calculate-btn {
+        padding: 16px 20px;
+        font-size: 1rem;
+    }
+
+    .back-button span {
+        display: none;
+    }
+
+    .source-title {
+        font-size: 1.25rem;
+    }
+
+    .copy-btn {
+        padding: 12px;
+    }
+
+    .copy-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .summary-content {
+        font-size: 0.75rem;
+        padding: 16px;
+    }
+}
+
+/* ===== iPhone SE and small devices ===== */
+@media (max-width: 375px) {
+    .landing-header {
+        padding: 30px 12px 24px;
+    }
+
+    .logo-icon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .coordinator-badge {
+        padding: 16px 20px;
+    }
+
+    .badge-name {
+        font-size: 1.1rem;
+    }
+
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .region-section {
+        padding: 16px 12px;
+    }
+
+    .price-number {
+        font-size: 1.75rem;
+    }
+
+    .input-wrapper input {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+
+    .projection-value {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+}
+
+/* ===== Touch-friendly improvements ===== */
+@media (hover: none) and (pointer: coarse) {
+    .energy-card {
+        min-height: 140px;
+    }
+
+    .calculate-btn {
+        min-height: 54px;
+    }
+
+    .back-button {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .copy-btn {
+        min-height: 44px;
+    }
+
+    .input-wrapper input {
+        min-height: 48px;
+    }
+
+    .source-link {
+        min-height: 60px;
+    }
+}
+
+/* ===== Safe area insets for notched iPhones ===== */
+@supports (padding: env(safe-area-inset-top)) {
+    .landing-header {
+        padding-top: calc(60px + env(safe-area-inset-top));
+    }
+
+    .detail-header {
+        padding-top: calc(20px + env(safe-area-inset-top));
+    }
+
+    .landing-footer {
+        padding-bottom: calc(24px + env(safe-area-inset-bottom));
+    }
+
+    .sources-section {
+        margin-bottom: calc(20px + env(safe-area-inset-bottom));
     }
 }
 

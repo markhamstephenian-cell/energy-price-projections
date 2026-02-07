@@ -1,0 +1,39 @@
+<svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#1a1a2e"/>
+            <stop offset="100%" style="stop-color:#0a0a0f"/>
+        </linearGradient>
+        <linearGradient id="personGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00d4ff"/>
+            <stop offset="100%" style="stop-color:#7c3aed"/>
+        </linearGradient>
+        <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fbbf24"/>
+            <stop offset="100%" style="stop-color:#f59e0b"/>
+        </linearGradient>
+    </defs>
+
+    <!-- Background -->
+    <rect width="180" height="180" rx="40" fill="url(#bgGrad)"/>
+
+    <!-- Subtle glow -->
+    <circle cx="120" cy="70" r="50" fill="#7c3aed" opacity="0.15"/>
+
+    <!-- Person -->
+    <circle cx="60" cy="50" r="16" fill="url(#personGrad)"/>
+    <path d="M60 68 L60 110 M60 80 L42 100 M60 80 L78 100 M60 110 L45 140 M60 110 L75 140"
+          stroke="url(#personGrad)" stroke-width="8" stroke-linecap="round" fill="none"/>
+
+    <!-- Reaching arm -->
+    <path d="M78 100 L105 85" stroke="url(#personGrad)" stroke-width="8" stroke-linecap="round"/>
+
+    <!-- Energy bolt -->
+    <path d="M115 35 L100 75 L118 75 L103 115 L140 65 L118 65 L138 35 Z"
+          fill="url(#boltGrad)"/>
+
+    <!-- Data particles -->
+    <circle cx="145" cy="45" r="6" fill="#00d4ff"/>
+    <circle cx="155" cy="65" r="4" fill="#7c3aed"/>
+    <circle cx="148" cy="100" r="5" fill="#00d4ff"/>
+</svg>

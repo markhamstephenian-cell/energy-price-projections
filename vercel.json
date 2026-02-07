@@ -20,6 +20,10 @@
     {
       "src": "*.svg",
       "use": "@vercel/static"
+    },
+    {
+      "src": "*.png",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -38,6 +42,10 @@
     {
       "src": "/favicon.svg",
       "dest": "/favicon.svg"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "dest": "/apple-touch-icon.png"
     },
     {
       "src": "/",
