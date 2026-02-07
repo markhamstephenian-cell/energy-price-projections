@@ -1,0 +1,23 @@
+{
+  "name": "energy-price-projections",
+  "version": "1.0.0",
+  "description": "Energy Price Projections Platform - Coordinator: Luke Markham",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo 'No build step required'"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^2.7.0",
+    "dotenv": "^16.3.1"
+  },
+  "keywords": ["energy", "prices", "projections", "commodities"],
+  "author": "Luke Markham",
+  "license": "MIT"
+}

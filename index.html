@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Price Projections</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <div class="hero-background">
+            <div class="energy-particles"></div>
+        </div>
+        <header class="landing-header">
+            <div class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Little man getting energy data icon -->
+                    <defs>
+                        <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Person body -->
+                    <circle cx="28" cy="18" r="8" fill="url(#energyGradient)"/>
+                    <path d="M28 28 L28 48 M28 34 L18 44 M28 34 L38 44 M28 48 L20 62 M28 48 L36 62"
+                          stroke="url(#energyGradient)" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    <!-- Energy bolt being grabbed -->
+                    <path d="M50 15 L42 35 L52 35 L44 55 L60 30 L48 30 L58 15 Z"
+                          fill="url(#boltGradient)" class="bolt-animate"/>
+                    <!-- Data streams -->
+                    <circle cx="62" cy="20" r="3" fill="#00d4ff" class="data-dot dot1"/>
+                    <circle cx="68" cy="28" r="2" fill="#7c3aed" class="data-dot dot2"/>
+                    <circle cx="65" cy="45" r="2.5" fill="#00d4ff" class="data-dot dot3"/>
+                    <!-- Reaching arm -->
+                    <path d="M38 44 L48 38" stroke="url(#energyGradient)" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1 class="main-title">Energy Price Projections</h1>
+            <p class="subtitle">Real-time data & intelligent forecasting</p>
+        </header>
+
+        <main class="landing-main">
+            <div class="coordinator-badge">
+                <div class="badge-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </div>
+                <div class="badge-text">
+                    <span class="badge-label">Platform Coordinator</span>
+                    <span class="badge-name">Luke Markham</span>
+                </div>
+            </div>
+
+            <h2 class="section-title">Select an Energy Source</h2>
+
+            <div class="energy-grid">
+                <button class="energy-card" data-source="oil" onclick="navigateToSource('oil')">
+                    <div class="card-icon oil">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <ellipse cx="32" cy="52" rx="20" ry="8" fill="#1a1a2e" opacity="0.3"/>
+                            <path d="M32 8 C32 8 20 24 20 36 C20 48 26 52 32 52 C38 52 44 48 44 36 C44 24 32 8 32 8Z"
+                                  fill="url(#oilGradient)"/>
+                            <defs>
+                                <linearGradient id="oilGradient" x1="20" y1="8" x2="44" y2="52">
+                                    <stop offset="0%" style="stop-color:#4a4a4a"/>
+                                    <stop offset="100%" style="stop-color:#1a1a1a"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="card-title">Oil</span>
+                    <span class="card-subtitle">Crude & Petroleum</span>
+                </button>
+
+                <button class="energy-card" data-source="natural-gas" onclick="navigateToSource('natural-gas')">
+                    <div class="card-icon gas">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <ellipse cx="32" cy="54" rx="16" ry="6" fill="#1a1a2e" opacity="0.3"/>
+                            <path d="M26 50 C18 42 20 28 28 20 C24 28 28 34 32 30 C28 38 36 44 38 36 C42 44 46 36 42 28 C50 38 48 50 38 54 L26 50Z"
+                                  fill="url(#gasGradient)"/>
+                            <defs>
+                                <linearGradient id="gasGradient" x1="20" y1="20" x2="46" y2="54">
+                                    <stop offset="0%" style="stop-color:#60a5fa"/>
+                                    <stop offset="50%" style="stop-color:#3b82f6"/>
+                                    <stop offset="100%" style="stop-color:#1d4ed8"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="card-title">Natural Gas</span>
+                    <span class="card-subtitle">LNG & Pipeline</span>
+                </button>
+
+                <button class="energy-card" data-source="nuclear" onclick="navigateToSource('nuclear')">
+                    <div class="card-icon nuclear">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="24" stroke="url(#nuclearGradient)" stroke-width="3" fill="none"/>
+                            <circle cx="32" cy="32" r="6" fill="url(#nuclearGradient)"/>
+                            <circle cx="32" cy="14" r="5" fill="url(#nuclearGradient)"/>
+                            <circle cx="17" cy="41" r="5" fill="url(#nuclearGradient)"/>
+                            <circle cx="47" cy="41" r="5" fill="url(#nuclearGradient)"/>
+                            <line x1="32" y1="32" x2="32" y2="19" stroke="url(#nuclearGradient)" stroke-width="2"/>
+                            <line x1="32" y1="32" x2="21" y2="38" stroke="url(#nuclearGradient)" stroke-width="2"/>
+                            <line x1="32" y1="32" x2="43" y2="38" stroke="url(#nuclearGradient)" stroke-width="2"/>
+                            <defs>
+                                <linearGradient id="nuclearGradient" x1="8" y1="8" x2="56" y2="56">
+                                    <stop offset="0%" style="stop-color:#a855f7"/>
+                                    <stop offset="100%" style="stop-color:#7c3aed"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="card-title">Nuclear</span>
+                    <span class="card-subtitle">Fission Power</span>
+                </button>
+
+                <button class="energy-card" data-source="solar" onclick="navigateToSource('solar')">
+                    <div class="card-icon solar">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="12" fill="url(#solarGradient)"/>
+                            <g stroke="url(#solarGradient)" stroke-width="3" stroke-linecap="round">
+                                <line x1="32" y1="6" x2="32" y2="14"/>
+                                <line x1="32" y1="50" x2="32" y2="58"/>
+                                <line x1="6" y1="32" x2="14" y2="32"/>
+                                <line x1="50" y1="32" x2="58" y2="32"/>
+                                <line x1="13.6" y1="13.6" x2="19.3" y2="19.3"/>
+                                <line x1="44.7" y1="44.7" x2="50.4" y2="50.4"/>
+                                <line x1="13.6" y1="50.4" x2="19.3" y2="44.7"/>
+                                <line x1="44.7" y1="19.3" x2="50.4" y2="13.6"/>
+                            </g>
+                            <defs>
+                                <linearGradient id="solarGradient" x1="8" y1="8" x2="56" y2="56">
+                                    <stop offset="0%" style="stop-color:#fbbf24"/>
+                                    <stop offset="100%" style="stop-color:#f59e0b"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="card-title">Solar</span>
+                    <span class="card-subtitle">Photovoltaic</span>
+                </button>
+
+                <button class="energy-card" data-source="renewables" onclick="navigateToSource('renewables')">
+                    <div class="card-icon renewables">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <path d="M32 8 L32 56" stroke="#94a3b8" stroke-width="4"/>
+                            <path d="M32 12 Q48 20 32 32 Q16 20 32 12" fill="url(#windGradient)"/>
+                            <path d="M32 12 Q32 32 48 40 Q32 32 32 12" fill="url(#windGradient)" transform="rotate(120 32 32)"/>
+                            <path d="M32 12 Q32 32 48 40 Q32 32 32 12" fill="url(#windGradient)" transform="rotate(240 32 32)"/>
+                            <circle cx="32" cy="32" r="4" fill="#1e293b"/>
+                            <defs>
+                                <linearGradient id="windGradient" x1="16" y1="12" x2="48" y2="40">
+                                    <stop offset="0%" style="stop-color:#10b981"/>
+                                    <stop offset="100%" style="stop-color:#059669"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="card-title">Other Renewables</span>
+                    <span class="card-subtitle">Wind, Hydro & More</span>
+                </button>
+
+                <button class="energy-card" data-source="coal" onclick="navigateToSource('coal')">
+                    <div class="card-icon coal">
+                        <svg viewBox="0 0 64 64" fill="none">
+                            <ellipse cx="32" cy="48" rx="22" ry="10" fill="url(#coalGradient)"/>
+                            <ellipse cx="32" cy="40" rx="18" ry="8" fill="#374151"/>
+                            <ellipse cx="26" cy="36" rx="8" ry="6" fill="#1f2937"/>
+                            <ellipse cx="40" cy="38" rx="10" ry="7" fill="#111827"/>
+                            <ellipse cx="32" cy="32" rx="6" ry="5" fill="#374151"/>
+                            <defs>
+                                <linearGradient id="coalGradient" x1="10" y1="38" x2="54" y2="58">
+                                    <stop offset="0%" style="stop-color:#374151"/>
+                                    <stop offset="100%" style="stop-color:#111827"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <span class="card-title">Coal</span>
+                    <span class="card-subtitle">Thermal & Metallurgical</span>
+                </button>
+            </div>
+        </main>
+
+        <footer class="landing-footer">
+            <p>Data sources: EIA, FRED, Our World in Data, Trading Economics, Investing.com</p>
+        </footer>
+    </div>
+
+    <!-- Energy Source Detail Page -->
+    <div id="detail-page" class="page">
+        <header class="detail-header">
+            <button class="back-button" onclick="goBack()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                <span>Back to Portal</span>
+            </button>
+            <div class="header-title-group">
+                <div id="source-icon" class="source-icon"></div>
+                <h1 id="source-title" class="source-title">Energy Source</h1>
+            </div>
+            <div class="fetch-indicator" id="fetch-indicator">
+                <div class="fetch-spinner"></div>
+                <span>Fetching live data...</span>
+            </div>
+        </header>
+
+        <main class="detail-main">
+            <div class="data-container">
+                <!-- United States Section -->
+                <section class="region-section us-section">
+                    <div class="region-header">
+                        <div class="region-flag us-flag">
+                            <svg viewBox="0 0 60 40">
+                                <rect width="60" height="40" fill="#bf0a30"/>
+                                <rect y="3" width="60" height="3" fill="white"/>
+                                <rect y="9" width="60" height="3" fill="white"/>
+                                <rect y="15" width="60" height="3" fill="white"/>
+                                <rect y="21" width="60" height="3" fill="white"/>
+                                <rect y="27" width="60" height="3" fill="white"/>
+                                <rect y="33" width="60" height="3" fill="white"/>
+                                <rect width="24" height="21" fill="#002868"/>
+                            </svg>
+                        </div>
+                        <h2>United States</h2>
+                    </div>
+
+                    <div class="price-display">
+                        <div class="current-price-card">
+                            <span class="price-label">Current Price</span>
+                            <div class="price-value">
+                                <span class="currency">$</span>
+                                <span id="us-price" class="price-number">--</span>
+                                <span id="us-unit" class="price-unit">/unit</span>
+                            </div>
+                            <span id="us-price-date" class="price-date">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="projection-panel">
+                        <h3>Usage & Price Projection</h3>
+                        <div class="projection-inputs">
+                            <div class="input-group">
+                                <label for="us-usage-increase">Projected Usage Change</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="us-usage-increase" min="-100" max="500" value="10" step="1">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="arrow-connector">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            <div class="output-group">
+                                <label>Projected Price Change</label>
+                                <div class="output-wrapper">
+                                    <span id="us-price-projection" class="projection-value">--</span>
+                                    <span class="output-suffix">%</span>
+                                </div>
+                                <div class="projected-price">
+                                    New Price: <span id="us-new-price">$--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="calculate-btn" onclick="calculateProjection('us')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 7h6M9 12h6M9 17h4M4 4h16v16H4z"/>
+                            </svg>
+                            Calculate Projection
+                        </button>
+                    </div>
+                </section>
+
+                <!-- World Section -->
+                <section class="region-section world-section">
+                    <div class="region-header">
+                        <div class="region-flag world-flag">
+                            <svg viewBox="0 0 60 40">
+                                <rect width="60" height="40" fill="#0077be"/>
+                                <circle cx="30" cy="20" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+                                <ellipse cx="30" cy="20" rx="14" ry="6" fill="none" stroke="white" stroke-width="1"/>
+                                <ellipse cx="30" cy="20" rx="6" ry="14" fill="none" stroke="white" stroke-width="1"/>
+                                <line x1="16" y1="20" x2="44" y2="20" stroke="white" stroke-width="0.8"/>
+                                <line x1="30" y1="6" x2="30" y2="34" stroke="white" stroke-width="0.8"/>
+                            </svg>
+                        </div>
+                        <h2>World</h2>
+                    </div>
+
+                    <div class="price-display">
+                        <div class="current-price-card">
+                            <span class="price-label">Current Price</span>
+                            <div class="price-value">
+                                <span class="currency">$</span>
+                                <span id="world-price" class="price-number">--</span>
+                                <span id="world-unit" class="price-unit">/unit</span>
+                            </div>
+                            <span id="world-price-date" class="price-date">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="projection-panel">
+                        <h3>Usage & Price Projection</h3>
+                        <div class="projection-inputs">
+                            <div class="input-group">
+                                <label for="world-usage-increase">Projected Usage Change</label>
+                                <div class="input-wrapper">
+                                    <input type="number" id="world-usage-increase" min="-100" max="500" value="10" step="1">
+                                    <span class="input-suffix">%</span>
+                                </div>
+                            </div>
+                            <div class="arrow-connector">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            <div class="output-group">
+                                <label>Projected Price Change</label>
+                                <div class="output-wrapper">
+                                    <span id="world-price-projection" class="projection-value">--</span>
+                                    <span class="output-suffix">%</span>
+                                </div>
+                                <div class="projected-price">
+                                    New Price: <span id="world-new-price">$--</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="calculate-btn" onclick="calculateProjection('world')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 7h6M9 12h6M9 17h4M4 4h16v16H4z"/>
+                            </svg>
+                            Calculate Projection
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Summary Panel -->
+            <section class="summary-section" id="summary-section" style="display: none;">
+                <div class="summary-header">
+                    <h3>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                            <polyline points="10 9 9 9 8 9"/>
+                        </svg>
+                        Projection Summary
+                    </h3>
+                    <button class="copy-btn" onclick="copySummary()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        Copy to Clipboard
+                    </button>
+                </div>
+                <div class="summary-content" id="summary-content">
+                    <!-- Summary content will be generated here -->
+                </div>
+                <div class="copy-success" id="copy-success">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Copied to clipboard!
+                </div>
+            </section>
+
+            <!-- Data Sources Reference -->
+            <section class="sources-section">
+                <h3>Data Sources</h3>
+                <div class="sources-grid">
+                    <a href="https://www.eia.gov/outlooks/steo/realprices/" target="_blank" class="source-link">
+                        <span class="source-name">EIA</span>
+                        <span class="source-desc">U.S. Energy Information Administration</span>
+                    </a>
+                    <a href="https://fred.stlouisfed.org/series/APU000072610" target="_blank" class="source-link">
+                        <span class="source-name">FRED</span>
+                        <span class="source-desc">Federal Reserve Economic Data</span>
+                    </a>
+                    <a href="https://ourworldindata.org/grapher/levelized-cost-of-energy" target="_blank" class="source-link">
+                        <span class="source-name">Our World in Data</span>
+                        <span class="source-desc">Levelized Cost of Energy</span>
+                    </a>
+                    <a href="https://tradingeconomics.com/commodities" target="_blank" class="source-link">
+                        <span class="source-name">Trading Economics</span>
+                        <span class="source-desc">Commodity Prices</span>
+                    </a>
+                    <a href="https://www.investing.com/commodities/energy" target="_blank" class="source-link">
+                        <span class="source-name">Investing.com</span>
+                        <span class="source-desc">Energy Commodities</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

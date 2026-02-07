@@ -1,0 +1,33 @@
+<svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="energyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#fbbf24;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <!-- Background circle -->
+    <circle cx="40" cy="40" r="38" fill="#0a0a0f"/>
+    <circle cx="40" cy="40" r="38" fill="none" stroke="url(#energyGradient)" stroke-width="2"/>
+
+    <!-- Person body -->
+    <circle cx="28" cy="20" r="7" fill="url(#energyGradient)"/>
+    <path d="M28 28 L28 46 M28 34 L19 43 M28 34 L37 43 M28 46 L21 58 M28 46 L35 58"
+          stroke="url(#energyGradient)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+
+    <!-- Energy bolt being grabbed -->
+    <path d="M48 16 L41 33 L50 33 L43 50 L57 29 L47 29 L55 16 Z"
+          fill="url(#boltGradient)"/>
+
+    <!-- Reaching arm -->
+    <path d="M37 43 L46 38" stroke="url(#energyGradient)" stroke-width="3.5" stroke-linecap="round"/>
+
+    <!-- Data particles -->
+    <circle cx="60" cy="22" r="2.5" fill="#00d4ff"/>
+    <circle cx="65" cy="30" r="1.8" fill="#7c3aed"/>
+    <circle cx="62" cy="42" r="2" fill="#00d4ff"/>
+</svg>
